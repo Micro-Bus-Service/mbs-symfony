@@ -1,0 +1,12 @@
+bus:
+  server:
+    protocol: 'https'
+    host: ''
+    port: 80
+  service:
+    serviceName: '@todo'
+    version: '@todo'
+    ip: '@todo'
+    port: '@todo'
+    url: '@todo'
+    messageType: '@todo'
