@@ -1,6 +1,6 @@
 <?php
 
-namespace Mbs\MbsBundle\DepencyInjection;
+namespace Mbs\MbsBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -20,6 +20,8 @@ class MbsExtension extends Extension
 
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter('mbs.service.name', $config['service']['name']);
+        if (isset($config['service'])) {
+            $container->setParameter('mbs.service.name', $config['service']['name']);
+        }
     }
 }

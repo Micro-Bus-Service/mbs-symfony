@@ -1,6 +1,6 @@
 <?php
 
-namespace Mbs\MbsBundle\DepencyInjection;
+namespace Mbs\MbsBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -23,20 +23,24 @@ class Configuration implements ConfigurationInterface
             ->end()
             ->children()
                 ->arrayNode('service')
+                    ->validate()
+                        ->ifNotInArray(['service'])
+                        ->thenInvalid('The %s type is not supported')
+                    ->end()
                     ->children()
                         ->scalarNode('serviceName')->end()
                         ->scalarNode('version')->end()
                         ->scalarNode('ip')->end()
-                        ->port('port')->end()
-                        ->url('url')->end()
-                        ->arrayNode('messagesTypes')
-                            ->arrayPrototype()
-                                ->children()
-                                    ->scalarNode('messageType')
-                                    ->scalarNode('class')
-                                ->end()
-                            ->end()
-                        ->end()
+                        ->integerNode('port')->end()
+                        ->scalarNode('url')->end()
+                        // ->arrayNode('messagesTypes')
+                        //     ->arrayPrototype()
+                        //         ->children()
+                        //             ->scalarNode('messageType')
+                        //             ->scalarNode('class')
+                        //         ->end()
+                        //     ->end()
+                        // ->end()
                     ->end()
                 ->end()
             ->end()

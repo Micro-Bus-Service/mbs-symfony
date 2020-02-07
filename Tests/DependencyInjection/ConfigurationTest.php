@@ -2,8 +2,11 @@
 
 namespace Mbs\MbsBundle\Tests\DependencyInjection;
 
-use Mbs\MbsBundle\DepencyInjection\MbsExtension;
+use Mbs\MbsBundle\DependencyInjection\MbsExtension;
+use Mbs\MbsBundle\MbsBundle;
 use Mbs\MbsBundle\Tests\TestCase;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 class ConfigurationTest extends TestCase
 {
@@ -11,17 +14,40 @@ class ConfigurationTest extends TestCase
     {
         $container = $this->createContainer();
         $container->registerExtension(new MbsExtension());
-        $container->loadFromExtension('twig');
+        $container->loadFromExtension('mbs');
         $this->compileContainer($container);
 
-        $this->assertEquals('Twig\Environment', $container->getDefinition('twig')->getClass(), '->load() loads the twig.xml file');
+        var_dump($container->getDefinitions());
 
-        $this->assertContains('form_div_layout.html.twig', $container->getParameter('twig.form.resources'), '->load() includes default template for form resources');
+        $this->assertEquals('Mbs\Environment', $container->getDefinition('mbs')->getClass());
+    }
 
-        // Twig options
-        $options = $container->getDefinition('twig')->getArgument(1);
-        $this->assertEquals('%kernel.cache_dir%/twig', $options['cache'], '->load() sets default value for cache option');
-        $this->assertEquals('%kernel.charset%', $options['charset'], '->load() sets default value for charset option');
-        $this->assertEquals('%kernel.debug%', $options['debug'], '->load() sets default value for debug option');
+    private function createContainer()
+    {
+        $container = new ContainerBuilder(new ParameterBag([
+            'kernel.cache_dir' => __DIR__,
+            'kernel.project_dir' => __DIR__,
+            'kernel.charset' => 'UTF-8',
+            'kernel.debug' => false,
+            'kernel.bundles' => [
+                'MbsBundle' => MbsBundle::class,
+            ],
+            'kernel.bundles_metadata' => [
+                'MbsBundle' => [
+                    'namespace' => 'Mbs\MbsBundle\DependencyInjection\MbsBundle',
+                    'path' => __DIR__ . '/MbsBundle',
+                ],
+            ],
+        ]));
+
+        return $container;
+    }
+
+    private function compileContainer(ContainerBuilder $container)
+    {
+        $container->getCompilerPassConfig()->setOptimizationPasses([]);
+        $container->getCompilerPassConfig()->setRemovingPasses([]);
+        $container->getCompilerPassConfig()->setAfterRemovingPasses([]);
+        $container->compile();
     }
 }
