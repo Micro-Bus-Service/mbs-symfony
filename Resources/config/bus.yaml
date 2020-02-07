@@ -4,9 +4,10 @@ bus:
     host: ''
     port: 80
   service:
-    serviceName: '@todo'
+    name: '@todo'
     version: '@todo'
     ip: '@todo'
     port: '@todo'
     url: '@todo'
-    messageType: '@todo'
+    messagesTypes: 
+      - { messageType: '@todo', class: 'TodoClass' }
