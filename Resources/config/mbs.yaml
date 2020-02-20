@@ -1,4 +1,4 @@
-bus:
+mbs:
   server:
     protocol: 'https'
     host: ''

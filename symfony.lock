@@ -125,5 +125,8 @@
     },
     "symfony/var-dumper": {
         "version": "v5.0.4"
+    },
+    "symfony/yaml": {
+        "version": "v5.0.4"
     }
 }
