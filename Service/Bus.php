@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service;
+namespace Mbs\MbsBundle\Service;
 
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\ResponseInterface;
