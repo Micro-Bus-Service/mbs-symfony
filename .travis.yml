@@ -9,6 +9,7 @@ env:
     global:
         - PHPUNIT_FLAGS="-v"
         - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
+        - APP_ENV=dev
 
 matrix:
     fast_finish: true
