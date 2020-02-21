@@ -12,7 +12,12 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "Mbs\\MbsBundle\\": ""
+            "Mbs\\MbsBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mbs\\MbsBundle\\Tests\\": "Tests"
         }
     },
     "require": {
