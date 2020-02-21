@@ -2,7 +2,7 @@
     "name": "mbs/mbs-bundle",
     "description": "Symfony Bundle for Mbs",
     "type": "symfony-bundle",
-    "license": "GPLv3",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "vilsafur",
