@@ -1,13 +1,13 @@
 mbs:
   server:
-    protocol: 'https'
+    protocol: ''
     host: ''
     port: 80
   service:
-    name: '@todo'
-    version: '@todo'
-    ip: '@todo'
-    port: '@todo'
-    url: '@todo'
+    name: ''
+    version: ''
+    ip: ''
+    port: ''
+    url: ''
     messagesTypes: 
-      - { messageType: '@todo', class: 'TodoClass' }
+      - { messageType: '', class: '' }
