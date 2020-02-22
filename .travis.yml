@@ -14,10 +14,10 @@ env:
 matrix:
     fast_finish: true
     include:
-      - php: 7.3
-      env: deps=high
-      - php: 7.4
-        env: deps=low
+        - php: 7.3
+            env: deps=high
+        - php: 7.4
+            env: deps=low
 
     allow_failures:
           # Dev-master is allowed to fail.
