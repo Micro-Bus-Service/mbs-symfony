@@ -54,7 +54,7 @@ class Bus
         return $httpClient->request('POST', $url, [
             'json' => 
                 [
-                    'uuid' => $token,
+                    'uuid' => $token->get(),
                     'message' => $params,
                 ]
         ]);
