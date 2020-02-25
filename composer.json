@@ -1,50 +1,50 @@
 {
-    "name": "mbs/mbs-bundle",
-    "description": "Symfony Bundle for Mbs",
-    "type": "symfony-bundle",
-    "license": "GPL-3.0-or-later",
-    "authors": [
-        {
-            "name": "vilsafur",
-            "email": "vilsafur@gmail.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "autoload": {
-        "psr-4": {
-            "Mbs\\MbsBundle\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Mbs\\MbsBundle\\Tests\\": "Tests"
-        }
-    },
-    "require": {
-        "symfony/http-kernel": "^5.0",
-        "symfony/console": "^5.0",
-        "symfony/routing": "^5.0",
-        "symfony/dependency-injection": "^5.0",
-        "symfony/config": "^5.0",
-        "symfony/flex": "^1.6",
-        "symfony/yaml": "^5.0",
-        "symfony/http-client": "^5.0",
-        "symfony/framework-bundle": "^5.0",
-        "symfony/cache": "^5.0"
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "3.*",
-        "symfony/phpunit-bridge": "^5.0"
-    },
-    "extra": {
-        "symfony": {
-            "allow-contrib": true
-        }
-    },
-    "scripts": {
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        }
+  "name": "mbs/mbs-bundle",
+  "description": "Symfony Bundle for Mbs",
+  "type": "symfony-bundle",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "vilsafur",
+      "email": "vilsafur@gmail.com"
     }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Mbs\\MbsBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Mbs\\MbsBundle\\Tests\\": "Tests"
+    }
+  },
+  "require": {
+    "symfony/http-kernel": "^5.0",
+    "symfony/console": "^5.0",
+    "symfony/routing": "^5.0",
+    "symfony/dependency-injection": "^5.0",
+    "symfony/config": "^5.0",
+    "symfony/flex": "^1.6",
+    "symfony/yaml": "^5.0",
+    "symfony/http-client": "^5.0",
+    "symfony/framework-bundle": "^5.0",
+    "symfony/cache": "^5.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "3.*",
+    "symfony/phpunit-bridge": "^5.0"
+  },
+  "extra": {
+    "symfony": {
+      "allow-contrib": true
+    }
+  },
+  "scripts": {
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    }
+  }
 }
