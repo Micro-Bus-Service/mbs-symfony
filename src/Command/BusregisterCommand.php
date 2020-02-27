@@ -1,6 +1,6 @@
 <?php
 
-namespace Mbs\MbsBundle\Commands;
+namespace Mbs\MbsBundle\Command;
 
 use Mbs\MbsBundle\Service\Bus;
 use Symfony\Component\Console\Command\Command;
