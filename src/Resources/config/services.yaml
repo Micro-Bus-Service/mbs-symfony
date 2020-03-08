@@ -1,11 +1,8 @@
-imports:
-  - { resource: mbs.yaml }
-
 services:
   _defaults:
     autowire: true
     autoconfigure: true
-
-  App\:
-    resource: "../src/*"
-    exclude: "../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}"
+  
+  Mbs\MbsBundle\:
+    resource: '../../../src/*'
+    exclude: '../../../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'

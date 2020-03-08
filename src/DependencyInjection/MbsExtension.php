@@ -2,8 +2,10 @@
 
 namespace Mbs\MbsBundle\DependencyInjection;
 
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 class MbsExtension extends Extension
 {
@@ -34,5 +36,8 @@ class MbsExtension extends Extension
             $container->setParameter('mbs.server.host', $config['server']['host']);
             $container->setParameter('mbs.server.port', $config['server']['port'] ?? 80);
         }
+
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.yaml');
     }
 }

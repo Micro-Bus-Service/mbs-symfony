@@ -7,7 +7,7 @@ mbs:
     name: ''
     version: ''
     ip: ''
-    port: ''
+    port: 80
     url: ''
     messagesTypes: 
       - { messageType: '', class: '' }

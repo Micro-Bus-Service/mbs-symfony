@@ -2,7 +2,7 @@
 
 namespace Mbs\MbsBundle\Service;
 
-use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
@@ -10,7 +10,7 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 class Bus
 {
     /**
-     * @var Container
+     * @var ContainerInterface
      */
     protected $container;
 
@@ -26,7 +26,7 @@ class Bus
      */
     protected static $token;
 
-    public function __construct(Container $container)
+    public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
     }
