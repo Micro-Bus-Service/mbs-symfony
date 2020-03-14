@@ -35,8 +35,12 @@ class BusregisterCommand extends Command
 
         if ($registrationResponse->getStatusCode() === 201) {
             $io->success('Registrated');
+
+            return 0;
         } else {
             $io->error('Registration failed width message : ' . $registrationResponse->getContent());
+
+            return 1;
         }
     }
 }

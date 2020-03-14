@@ -31,12 +31,17 @@ class BusunregisterCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $registrationResponse = $this->bus->register();
+        $registrationResponse = $this->bus->unregister();
 
         if ($registrationResponse->getStatusCode() === 201) {
             $io->success('Unregistrated');
+
+            return 0;
         } else {
             $io->error('Unregistration failed width message : ' . $registrationResponse->getContent());
+
+            return 1;
         }
+
     }
 }

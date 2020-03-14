@@ -6,6 +6,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Component\HttpFoundation\Request;
 
 class Bus
 {
@@ -111,11 +112,27 @@ class Bus
     {
         $cache = new FilesystemAdapter();
         $token = $cache->getItem($this->tokenCacheName);
-
-        $url = $this->getBusUrl() . '/services/' . $token;
-
+        
+        if (!$token->isHit())  {
+            throw new \Exception('This service is already unregitered');
+        }
+        
+        $url = $this->getBusUrl() . '/services/' . $token->get();
+        
         $httpClient = HttpClient::create();
-        return $httpClient->request('DELETE', $url);
+        $return = $httpClient->request(Request::METHOD_DELETE, $url);
+        
+        switch ($return->getStatusCode()) {
+            case 201:
+                $cache->deleteItem($this->tokenCacheName);
+                break;
+            
+            default:
+                break;
+        }
+        $cache->save($token);
+
+        return $return;
 
     }
 
