@@ -32,7 +32,7 @@ class Bus
     }
 
     /**
-     * Undocumented function
+     * Send the message to bus
      *
      * @param string $type
      * @param array|string $params
