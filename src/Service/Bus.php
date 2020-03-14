@@ -107,6 +107,18 @@ class Bus
         return $return;
     }
 
+    public function unregister(): ResponseInterface
+    {
+        $cache = new FilesystemAdapter();
+        $token = $cache->getItem($this->tokenCacheName);
+
+        $url = $this->getBusUrl() . '/services/' . $token;
+
+        $httpClient = HttpClient::create();
+        return $httpClient->request('DELETE', $url);
+
+    }
+
     protected function getBusUrl()
     {
         return $this->container->getParameter('mbs.server.protocol')
