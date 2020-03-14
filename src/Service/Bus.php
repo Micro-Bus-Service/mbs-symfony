@@ -68,6 +68,12 @@ class Bus
     public function register (): ResponseInterface
     {
         $url = $this->getBusUrl() . '/services';
+
+        $messagesTypes = [];
+
+        foreach ($this->container->getParameter('mbs.service.messagesTypes') as $messageType) {
+            $messagesTypes[] = $messageType['messageType'];
+        }
         
         $httpClient = HttpClient::create();
         $return = $httpClient->request('POST', $url, [
@@ -77,7 +83,7 @@ class Bus
                 'ip' => $this->container->getParameter('mbs.service.ip'),
                 'port' => $this->container->getParameter('mbs.service.port'),
                 'url' => $this->container->getParameter('mbs.service.url'),
-                'messageType' => $this->container->getParameter('mbs.service.messagesTypes'),
+                'messageType' => $messagesTypes,
             ],
         ]);
         
